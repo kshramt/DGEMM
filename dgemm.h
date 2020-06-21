@@ -1,14 +1,19 @@
+#include <immintrin.h>
 #include <cassert>
 #include <cmath>
 #include <cstdint>
 #include <vector>
 
+#include <boost/align/aligned_allocator.hpp>
+
 namespace dgemm {
 using i64 = std::int64_t;
+using double_avx_allocator_t =
+    boost::alignment::aligned_allocator<double, alignof(__m256d)>;
 
-template <typename T>
-auto dgemm1(const i64 n, const std::vector<T>& A, const std::vector<T>& B,
-            std::vector<T>& C) {
+template <typename T, typename Allocator>
+auto dgemm(const i64 n, const std::vector<T, Allocator>& A,
+           const std::vector<T, Allocator>& B, std::vector<T, Allocator>& C) {
   assert(std::pow(n, 2) <= A.size());
   assert(std::pow(n, 2) <= B.size());
   assert(std::pow(n, 2) <= C.size());
