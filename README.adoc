@@ -1,0 +1,46 @@
+1.8 GHz Intel Core i5
+
+----
+dgemm_block_avx_unroll_openmp	32	4.94463e-05
+dgemm_block_avx_unroll_openmp	64	8.68347e-05
+dgemm_block_avx_unroll_openmp	128	0.000268327
+dgemm_block_avx_unroll_openmp	256	0.00142405
+dgemm_block_avx_unroll_openmp	512	0.0244488
+dgemm_block_avx_unroll_openmp	1024	0.140451
+dgemm_block_avx_unroll	32	5.73974e-06
+dgemm_block_avx_unroll	64	4.71983e-05
+dgemm_block_avx_unroll	128	0.000457368
+dgemm_block_avx_unroll	256	0.00387876
+dgemm_block_avx_unroll	512	0.0496164
+dgemm_block_avx_unroll	1024	0.286635
+dgemm_block	32	2.70233e-05
+dgemm_block	64	0.000250385
+dgemm_block	128	0.00225112
+dgemm_block	256	0.018994
+dgemm_block	512	0.236271
+dgemm_block	1024	2.08814
+dgemm_avx_unroll	32	9.96805e-06
+dgemm_avx_unroll	64	6.71761e-05
+dgemm_avx_unroll	128	0.000360219
+dgemm_avx_unroll	256	0.00481644
+dgemm_avx_unroll	512	0.178232
+dgemm_avx_unroll	1024	1.7662
+dgemm_avx	32	1.01003e-05
+dgemm_avx	64	8.13807e-05
+dgemm_avx	128	0.000796859
+dgemm_avx	256	0.0116099
+dgemm_avx	512	0.128798
+dgemm_avx	1024	3.26742
+dgemm_openmp	32	3.23344e-05
+dgemm_openmp	64	7.92623e-05
+dgemm_openmp	128	0.000919052
+dgemm_openmp	256	0.0170368
+dgemm_openmp	512	0.17737
+dgemm_openmp	1024	7.23831
+dgemm	32	3.59326e-05
+dgemm	64	0.000293442
+dgemm	128	0.00282961
+dgemm	256	0.044093
+dgemm	512	0.689374
+dgemm	1024	13.1216
+----

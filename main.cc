@@ -45,20 +45,135 @@ int main() {
   {
     std::mt19937 gen{42};
     auto rng = [&gen, &dis]() { return dis(gen); };
-    auto run = [&rng](auto n) {
+    auto run = [&rng](auto n, auto nit) {
       bench(
-          "dgemm", n, 5,
+          "dgemm_block_avx_unroll_openmp", n, nit,
+          [](const auto n, const auto& A, const auto& B, auto& C) {
+            dgemm::dgemm_block_avx_unroll_openmp(n, A, B, C);
+          },
+          rng);
+    };
+    // run(16, 20);
+    run(32, 20);
+    run(64, 10);
+    run(128, 10);
+    run(256, 4);
+    run(512, 2);
+    run(1024, 2);
+  }
+  {
+    std::mt19937 gen{42};
+    auto rng = [&gen, &dis]() { return dis(gen); };
+    auto run = [&rng](auto n, auto nit) {
+      bench(
+          "dgemm_block_avx_unroll", n, nit,
+          [](const auto n, const auto& A, const auto& B, auto& C) {
+            dgemm::dgemm_block_avx_unroll(n, A, B, C);
+          },
+          rng);
+    };
+    // run(16, 20);
+    run(32, 20);
+    run(64, 10);
+    run(128, 10);
+    run(256, 4);
+    run(512, 2);
+    run(1024, 2);
+  }
+  {
+    std::mt19937 gen{42};
+    auto rng = [&gen, &dis]() { return dis(gen); };
+    auto run = [&rng](auto n, auto nit) {
+      bench(
+          "dgemm_block", n, nit,
+          [](const auto n, const auto& A, const auto& B, auto& C) {
+            dgemm::dgemm_block(n, A, B, C);
+          },
+          rng);
+    };
+    // run(16, 20);
+    run(32, 20);
+    run(64, 10);
+    run(128, 10);
+    run(256, 4);
+    run(512, 2);
+    run(1024, 2);
+  }
+  {
+    std::mt19937 gen{42};
+    auto rng = [&gen, &dis]() { return dis(gen); };
+    auto run = [&rng](auto n, auto nit) {
+      bench(
+          "dgemm_avx_unroll", n, nit,
+          [](const auto n, const auto& A, const auto& B, auto& C) {
+            dgemm::dgemm_avx_unroll(n, A, B, C);
+          },
+          rng);
+    };
+    // run(16, 20);
+    run(32, 20);
+    run(64, 10);
+    run(128, 10);
+    run(256, 4);
+    run(512, 2);
+    run(1024, 2);
+  }
+  {
+    std::mt19937 gen{42};
+    auto rng = [&gen, &dis]() { return dis(gen); };
+    auto run = [&rng](auto n, auto nit) {
+      bench(
+          "dgemm_avx", n, nit,
+          [](const auto n, const auto& A, const auto& B, auto& C) {
+            dgemm::dgemm_avx(n, A, B, C);
+          },
+          rng);
+    };
+    // run(16, 20);
+    run(32, 20);
+    run(64, 10);
+    run(128, 10);
+    run(256, 4);
+    run(512, 2);
+    run(1024, 2);
+  }
+  {
+    std::mt19937 gen{42};
+    auto rng = [&gen, &dis]() { return dis(gen); };
+    auto run = [&rng](auto n, auto nit) {
+      bench(
+          "dgemm_openmp", n, nit,
+          [](const auto n, const auto& A, const auto& B, auto& C) {
+            dgemm::dgemm_openmp(n, A, B, C);
+          },
+          rng);
+    };
+    // run(16, 20);
+    run(32, 20);
+    run(64, 10);
+    run(128, 10);
+    run(256, 4);
+    run(512, 2);
+    run(1024, 2);
+  }
+  {
+    std::mt19937 gen{42};
+    auto rng = [&gen, &dis]() { return dis(gen); };
+    auto run = [&rng](auto n, auto nit) {
+      bench(
+          "dgemm", n, nit,
           [](const auto n, const auto& A, const auto& B, auto& C) {
             dgemm::dgemm(n, A, B, C);
           },
           rng);
     };
-    run(12);
-    run(36);
-    run(108);
-    run(324);
-    run(972);
-    // run(2430);
+    // run(16, 20);
+    run(32, 20);
+    run(64, 10);
+    run(128, 10);
+    run(256, 4);
+    run(512, 2);
+    run(1024, 2);
   }
   return 0;
 }

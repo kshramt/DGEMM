@@ -17,7 +17,7 @@ all:
 TIMEOUT_SEC := 120
 
 CXX := clang++
-CXX_FLAGS := -std=c++17 -march=native -Wall -O3
+CXX_FLAGS := -std=c++17 -march=native -Wall -O3 -fopenmp
 CXX_DEP_FLAGS := -MM
 
 all_files := $(shell git ls-files)
